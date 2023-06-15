@@ -1,5 +1,5 @@
-const { deterministicPartitionKey } = require("./dpk");
-//const { deterministicPartitionKey } = require("./dpk-refactored");
+//const { deterministicPartitionKey } = require("./dpk");
+const { deterministicPartitionKey } = require("./dpk-refactored");
 const cryto = require('crypto');
 
 describe("deterministicPartitionKey", () => {
@@ -61,9 +61,12 @@ describe("deterministicPartitionKey", () => {
   
     jest.spyOn(cryto,'createHash').mockImplementation(() => {
       return {
-        update: () => {
+        update: (data) => {
           return {
             digest: () => {
+              if(data && data.length > 256) {
+                return 'Lorem-ipsum-truncated';
+              }
               return 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id sapien vitae risus ultricies facilisis quis vel augue. Sed facilisis lacus venenatis metus interdum rutrum. Phasellus sollicitudin interdum elit placerat facilisis. Cras hendrerit ligula magna, et tristique ex commodo at porttitor.';
             }
           }
@@ -72,6 +75,6 @@ describe("deterministicPartitionKey", () => {
     });
   
     const trivialKey = deterministicPartitionKey(event);
-    expect(trivialKey).toBe('1234567890');
+    expect(trivialKey).toBe('Lorem-ipsum-truncated');
   });
 });
