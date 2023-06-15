@@ -147,12 +147,12 @@ Ticket 3: Update the Facility User Interface to Include Custom Agent ID Field
 
 Note:
 
--   If the grouping logic is intended to be handled directly within the query, there is no need to utilize the `groupAgentByShifts` function. In such cases, the focus should be solely on implementing the PDF generation logic within the generateReport function.
+*-   If the grouping logic is intended to be handled directly within the query, there is no need to utilize the `groupAgentByShifts` function. In such cases, the focus should be solely on implementing the PDF generation logic within the generateReport function.*
 
 **Estimation:** 2 hours
 
   
-
+---
 **Ticket 6: Test the end-to-end flow after completing the previous tickets.**
 
 **Description:** After completing the previous tickets, it is essential to thoroughly test the end-to-end flow by adding an agent ID and ensuring it reflects in the report. Manual testing or writing automated tests can be performed to achieve this.
